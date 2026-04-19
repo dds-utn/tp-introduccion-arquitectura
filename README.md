@@ -25,15 +25,31 @@ A partir de este modelo, tenemos que definir una primera versión del sistema qu
 > física más sencilla que resuelva el problema planteado.
 
 1. Escribí un diagrama de despliegue utilizando [PlantUML](https://plantuml.com/).
-2. Guardá tu diagrama como un archivo `.puml` dentro del directorio
+2. Guardá tu diagrama como un archivo `.puml` dentro del directorio `diagrams`. El mismo debe verse aproximadamente así:
+
+```bash
+$ cat diagrams/diagramaDeEjemplo.puml
+@startuml
+...
+@enduml
+```
+
 3. Hacé un _commit_ y _push_ del repositorio tantas veces como necesites.
-4. Cuando hayas llegado a la versión final de tu diagrama, creá un tag llamado `entrega-final`: `git tag entrega-final && git push origin HEAD --tags`
-5. En caso de desear reentregar (siempre que te encuentres dentro del período de envío del trabajo práctico), deberás volver a crear **el mismo** tag: `git tag -f entrega-final && git push origin HEAD --tags -f`
+4. Cuando hayas llegado a la versión final de tu diagrama, creá un tag llamado `entrega-final`:
+
+```bash
+git tag entrega-final && git push origin HEAD --tags
+```
+
+5. En caso de desear reentregar (siempre que te encuentres dentro del período de envío del trabajo práctico), deberás volver a crear **el mismo** tag:
+
+```bash
+git tag -f entrega-final && git push origin HEAD --tags -f
+```
 
 Una vez que hayan entregado satisfactoriamente, deberán ver un tilde verde en su último commit:
 
 ![image](https://github.com/user-attachments/assets/797ac9f9-1968-4135-ab30-d43612fec14e)
-
 
 ## 🔗 Materiales útiles
 
