@@ -49,7 +49,8 @@ git tag -f entrega-final && git push origin HEAD --tags -f
 
 Una vez que hayan entregado satisfactoriamente, deberán ver un tilde verde en su último commit:
 
-![image](https://github.com/user-attachments/assets/797ac9f9-1968-4135-ab30-d43612fec14e)
+<img width="875" height="81" alt="image" src="https://github.com/user-attachments/assets/e497b30e-3f14-482d-b9df-855ba64512c9" />
+
 
 ## 🔗 Materiales útiles
 
