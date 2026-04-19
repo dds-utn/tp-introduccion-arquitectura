@@ -1,0 +1,55 @@
+name: Validate PlantUML Diagram
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "diagrams/*.puml"
+      - ".github/workflows/validate.py"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      - name: Validación de sintaxis y generación del diagrama
+        run: |
+          wget -O plantuml.jar "https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-1.2024.3.jar"
+          mkdir -p output
+          java -jar plantuml.jar -overwrite diagrams/*.puml -o ../output
+
+          rm plantuml.jar
+
+          echo "✅ Sintaxis PlantUML válida"
+          echo "Diagrama generado en output/"
+
+      - name: Validación de estructura y nombres
+        run: python3 .github/workflows/validate.py
+
+      - name: Commit & Push Changes
+        run: |
+          # Before attempting to commit changes, make sure something has changed
+          if [[ `git status --porcelain` ]]; then
+              git config --local user.email "action@github.com"
+              git config --local user.name "GitHub Action"
+              git add output/
+              git commit -am "DiagramaGeneradoCorrectamente"
+              git push
+          fi
