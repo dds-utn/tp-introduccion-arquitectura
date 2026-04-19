@@ -11,7 +11,16 @@ if not files:
     sys.exit(1)
 
 file_path = files[0]
-lines = file_path.read_text().splitlines()
+full_content = file_path.read_text().strip()
+if not full_content.startswith("@startuml"):
+    print("❌ El archivo debe empezar con @startuml")
+    sys.exit(1)
+
+if not full_content.endswith("@enduml"):
+    print("❌ El archivo debe terminar con @enduml")
+    sys.exit(1)
+
+lines = full_content.splitlines()
 
 # ----------------------------
 # Matcheo por nombres
