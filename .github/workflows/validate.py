@@ -213,5 +213,3 @@ else:
 if errors > 0:
     print(f"📝 Correcciones pendientes: {errors}")
     sys.exit(1)
-
-print("✅ ✨TPI2 aprobado✨")

@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Validación de estructura y nombres
+        run: python3 .github/workflows/validate.py
+
       - name: Install Graphviz
         run: |
           sudo apt-get update
@@ -34,6 +37,3 @@ jobs:
           mkdir -p output
           java -jar plantuml.jar -checkonly -failfast diagrams/*.puml
           echo "✅ Sintaxis PlantUML válida"
-
-      - name: Validación de estructura y nombres
-        run: python3 .github/workflows/validate.py
