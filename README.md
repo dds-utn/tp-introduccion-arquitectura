@@ -1,5 +1,5 @@
-# 🚐 Rueditas Amigas - Diagrama de Despliegue
-
+TP Introducción a Arquitectura - Diagrama de Despliegue
+=======================================================
 
 **Rueditas Amigas** es una empresa dedicada a brindar servicios de traslado inclusivos para personas con necesidades específicas. La organización ofrece diferentes tipos de servicios adaptados, tales como traslados turísticos y actividades recreativas, garantizando recorridos de ida y vuelta, dejando a los pasajeros, en el mismo punto de encuentro que en la salida.
 
@@ -19,14 +19,26 @@ A partir de este modelo, tenemos que definir una primera versión del sistema qu
 
 ---
 
-### 📍 Validación del Diagrama de Despliegue
+### 📍 Como resolver el ejercicio
+
 > [!IMPORTANT]
-> En caso de que el ejercicio esté correcto, el diagrama se generará automáticamente mediante GitHub Actions en la carpeta `output/`.
+>
+> El objetivo del TP no es realizar un diagrama complejo ni con el máximo nivel de detalle posible, sino bosquejar los elementos mínimos de la arquitectura
+> física más sencilla que resuelva el problema planteado.
+
+1. Escribí un diagrama de despliegue utilizando [PlantUML](https://plantuml.com/).
+2. Guardá tu diagrama como un archivo `.puml` dentro del directorio
+3. Hacé un _commit_ y _push_ del repositorio y verificá que obtengas una tilde verde.
 
 ---
 
-## 🔗 Enlaces
+## 🔗 Materiales útiles
 
+Este ejercicio se puede resolver íntegramente con los contenidos vistos en la primera clase de arquitectura. A modo de repaso y profundización, de todas formas, dejamos los siguientes enlaces:
+
+* 📄 [EntregaYaYaYa de la Guía de ejercicios de Arquitectura](https://docs.google.com/document/d/1snIOX5rNp3kwEkWF3R04-KuujUbMTOz1wanl3Rut0Ts/edit?tab=t.0#heading=h.tvlfd8lfshb0)
+* 📄 [Introducción a la Arquitectura de Software](https://docs.google.com/document/d/1XaKMrWPA0jntDK29gtEDRw-CoQgWXfHOmdbmihg4MpE/edit?tab=t.0#heading=h.z9jwy1eurzt9)
+* 📄 [Introducción a la Arquitectura Web](https://docs.google.com/document/d/1LBqAhXPzn-aeN5BIRZBmIrU5RKiYvySyWH-2Jkn-kJw/edit?tab=t.0)
 * 📄 [Documentación de Diagramas de Despliegue en PlantUML](https://plantuml.com/es/deployment-diagram)
-* 📄 [Link Enunciado](https://docs.google.com/document/d/13znCErQxKCfgXqUbEf6sdK3ThnOqYVKeDoQRm6U8J6g/edit?tab=t.0)
+* 📄 [Enunciado](https://docs.google.com/document/d/13znCErQxKCfgXqUbEf6sdK3ThnOqYVKeDoQRm6U8J6g/edit?tab=t.0)
 * 📄 [Modelo de Datos Relacional](https://docs.google.com/document/d/1vDZ-ybIgk7lBvqI5vZ0lp2qpSolJnpKDtUftYn65XU8/edit?usp=sharing)

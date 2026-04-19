@@ -42,14 +42,3 @@ jobs:
 
       - name: Validación de estructura y nombres
         run: python3 .github/workflows/validate.py
-
-      - name: Commit & Push Changes
-        run: |
-          # Before attempting to commit changes, make sure something has changed
-          if [[ `git status --porcelain` ]]; then
-              git config --local user.email "action@github.com"
-              git config --local user.name "GitHub Action"
-              git add output/
-              git commit -am "DiagramaGeneradoCorrectamente"
-              git push
-          fi
