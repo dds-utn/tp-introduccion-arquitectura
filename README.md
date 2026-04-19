@@ -7,9 +7,8 @@ Parte de nuestro equipo realizó previamente el modelo de datos y definió un es
 
 A partir de este modelo, tenemos que definir una primera versión del sistema que debe cumplir los siguientes requerimientos.
 
----
 
-### 📋✏️ Requerimientos
+## 📋✏️ Requerimientos
 
 * Las personas **solicitantes** de traslados deben poder ingresar al sistema desde cualquier dispositivo (computadora de escritorio, teléfono celular, etc).a través de **internet**.
 * Las personas **solicitantes** podrán ingresar al sistema en cualquier momento del día y realizar su solicitud.
@@ -17,9 +16,8 @@ A partir de este modelo, tenemos que definir una primera versión del sistema qu
 
 **Proponé y diagramá** una arquitectura que resuelva estas problemáticas usando PlantUML.
 
----
 
-### 📍 Como resolver el ejercicio
+## 📍 Como resolver el ejercicio
 
 > [!IMPORTANT]
 >
@@ -28,9 +26,14 @@ A partir de este modelo, tenemos que definir una primera versión del sistema qu
 
 1. Escribí un diagrama de despliegue utilizando [PlantUML](https://plantuml.com/).
 2. Guardá tu diagrama como un archivo `.puml` dentro del directorio
-3. Hacé un _commit_ y _push_ del repositorio y verificá que obtengas una tilde verde.
+3. Hacé un _commit_ y _push_ del repositorio tantas veces como necesites.
+4. Cuando hayas llegado a la versión final de tu diagrama, creá un tag llamado `entrega-final`: `git tag entrega-final && git push origin HEAD --tags`
+5. En caso de desear reentregar (siempre que te encuentres dentro del período de envío del trabajo práctico), deberás volver a crear **el mismo** tag: `git tag -f entrega-final && git push origin HEAD --tags -f`
 
----
+Una vez que hayan entregado satisfactoriamente, deberán ver un tilde verde en su último commit:
+
+![image](https://github.com/user-attachments/assets/797ac9f9-1968-4135-ab30-d43612fec14e)
+
 
 ## 🔗 Materiales útiles
 
