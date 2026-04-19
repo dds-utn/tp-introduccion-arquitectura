@@ -7,18 +7,14 @@ from pathlib import Path
 # ----------------------------
 files = list(Path("diagrams").glob("*.puml"))
 if not files:
-    print("❌ No .puml file found")
+    print("❌ No se encontró ningún archivo .puml en diagrams/")
+    sys.exit(1)
+if len(files) > 1:
+    print(f"❌ Se encontró más de un archivo .puml en diagrams/: {[f.name for f in files]}")
     sys.exit(1)
 
 file_path = files[0]
-full_content = file_path.read_text().strip()
-if not full_content.startswith("@startuml"):
-    print("❌ El archivo debe empezar con @startuml")
-    sys.exit(1)
-
-if not full_content.endswith("@enduml"):
-    print("❌ El archivo debe terminar con @enduml")
-    sys.exit(1)
+full_content = file_path.read_text()
 
 lines = full_content.splitlines()
 
@@ -51,7 +47,12 @@ componentes = {}   # nombre -> tipo
 relaciones = []   # {desde, to}
 
 def extraer_nombre(linea):
+    # Primero intentamos con nombre entre comillas (ej: actor "Mi Nombre")
     m = re.search(r'"([^"]+)"', linea)
+    if m:
+        return m.group(1)
+    # Si no hay comillas, buscamos un identificador simple luego de la keyword (ej: actor Admin)
+    m = re.search(r'(?:actor|database|cloud|node)\s+([A-Za-z_]\w*)', linea, re.IGNORECASE)
     return m.group(1) if m else None
 
 for line in lines:
@@ -78,12 +79,14 @@ for line in lines:
         if nombre:
             componentes[nombre] = "node"
 
-    # detectar relaciones
-    m = re.search(r'"([^"]+)"\s*(.*?)\s*([<>-]+)\s*"([^"]+)"', line)
+    # detectar relaciones: el nombre puede estar entre comillas o ser un identificador simple
+    # grupo 1: nombre izquierdo entre comillas / grupo 2: nombre izquierdo sin comillas
+    # grupo 4: nombre derecho entre comillas  / grupo 5: nombre derecho sin comillas
+    m = re.search(r'(?:"([^"]+)"|([A-Za-z_]\w*))\s*(?:.*?)\s*([<>-]+)\s*(?:"([^"]+)"|([A-Za-z_]\w*))', line)
     if m:
-        componente_izquierdo = m.group(1)
+        componente_izquierdo = m.group(1) or m.group(2)
         flecha = m.group(3)
-        componente_derecho = m.group(4)
+        componente_derecho = m.group(4) or m.group(5)
 
         if ">" in flecha and "<" not in flecha:
             # left -> right
@@ -151,9 +154,9 @@ if len(actores) < 2:
 elif len(actores) > 4:
     fail("Hay demasiados actores, todos están realmente justificados?")
 elif cant_solicitantes < 1:
-    fail("Debe haber al menos un actor que represente a les solicitantes")
+    fail("Debe haber al menos un actor que represente a les solicitantes (prestá atención al nombre)")
 elif cant_admins < 1:
-    fail("Debe haber al menos un actor que represente a les administradores")
+    fail("Debe haber al menos un actor que represente a les administradores (prestá atención al nombre)")
 elif actor_extranio:
     fail("Se encontraron actores que no corresponden a solicitantes ni administradores.")
 else:
@@ -203,7 +206,7 @@ else:
 if not nodos:
     fail("Debe haber al menos un nodo")
 elif len(nodos) > 3:
-    fail("Hay demasiados nodos, todos están realmente justificados?")
+    fail("Hay demasiados nodos, ¿todos están realmente justificados?")
 else:
     ok("Nodo/s OK")
 
